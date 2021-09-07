@@ -1,0 +1,17 @@
+version: '3'
+services:
+
+  db:
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    restart: always
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8085:8085
