@@ -18,18 +18,13 @@ Step by step:
 4. Then you need to alter these parameters inside PostgreSQL configuration file.
 ```
     log_statement = 'all'
-    log_directory = 'pg_log'
+    log_directory = 'log'
     log_filename = 'postgresql-%Y-%m-%d_%H%M%S.log'
     logging_collector = on
     log_min_error_statement = error
 ```
-5. Then restart the server ```sudo /etc/init.d/postgresql restart``` or ```sudo service postgresql restart```
-6. See the log
-7. 
-    The location of the log file will depend on the configuration.
-
-    On Debian-based systems the default is ```/var/log/postgresql/postgresql-9.3-main.log``` (replace 9.3 with your version of PostgreSQL).
-    On Red Hat-based systems it is located in ```/var/lib/pgsql/data/pg_log/```.
+5. Then restart container
+6. See the log. The location of the log file ```/var/lib/postgresql/data/log/```.
 
 # Enable monitoring (pg_stat_statements)
 1. Execute ```CREATE EXTENSION pg_stat_statements;```
