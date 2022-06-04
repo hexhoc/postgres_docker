@@ -4,10 +4,23 @@ services:
   db:
     image: postgres
     container_name: postgres
-    # volumes: 
-    #   - pgdata:/var/lib/postgresql/data
-    #   - pgconf:/etc/postgresql
-    #   - pglog:/var/log/postgresql      
+    command:
+       # configuration for logging. All this config properties we can also set in postgres.conf.conf
+      - "postgres"
+      - "-c"
+      - "log_statement=all"
+      - "-c"
+      - "log_directory=log"
+      - "-c"
+      - "log_filename=postgresql-%Y-%m-%d_%H%M%S.log"
+      - "-c"
+      - "logging_collector=on"      
+      - "-c"
+      - "log_min_error_statement=error"
+    volumes: 
+      - ./pgdata:/var/lib/postgresql/data
+      - ./pgconf:/etc/postgresql
+      - ./pglog:/var/log/postgresql     
     ports:
         - "5432:5432"
     environment:
@@ -22,11 +35,3 @@ services:
     environment:
       - PGADMIN_DEFAULT_EMAIL=user@domain.local
       - PGADMIN_DEFAULT_PASSWORD=SuperSecret
-
-volumes:
-  pgdata:
-    driver: local
-  pgconf:
-    driver: local
-  pglog: 
-    driver: local
