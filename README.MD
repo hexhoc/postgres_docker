@@ -6,12 +6,13 @@ I will be using Docker (version 19.03.8), so make sure you have it installed on 
 
 # Configuration
 Step by step:
-1. Run docker-compose up
+1. Run docker-compose up --build -d
+2. Set permission **pgdata** folder. Use next command ```sudo chmod -R 755 pgdata/```
 2. Connect to pgadmin4, for that connect to localhost:8085, enter login *user@domain.local* and password *SuperSecret*
 3. Add new server. Server name is *postgres*, login *postgres* and password *postgres*
 4. Have fun
 
-# Enable logging all queries
+# Enable logging all queries (Depricated. Logging is enable in docker-compose file)
 1. Connect to postgres shell
 2. Connect to database. ```psql -d postgres -U postgres```
 3. Use command to locate config file ```SHOW config_file``` in this example it ```/var/lib/postgresql/data/postgresql.conf```
