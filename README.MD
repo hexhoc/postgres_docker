@@ -25,6 +25,7 @@ Step by step:
     log_min_error_statement = error
 ```
 5. Then restart container
+6. Check config properties execute query (for example ```SHOW log_min_error_statement```)
 6. See the log. The location of the log file ```/var/lib/postgresql/data/log/```.
 
 # Enable monitoring (pg_stat_statements)

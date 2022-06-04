@@ -17,6 +17,8 @@ services:
       - "logging_collector=on"      
       - "-c"
       - "log_min_error_statement=error"
+      - "-c"
+      - "log_rotation_age=60"
     volumes: 
       - ./pgdata:/var/lib/postgresql/data
       - ./pgconf:/etc/postgresql
