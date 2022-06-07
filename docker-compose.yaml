@@ -2,7 +2,9 @@ version: '3'
 services:
 
   db:
-    image: postgres
+    build:
+      context: .
+      dockerfile: Dockerfile    
     container_name: postgres
     command:
        # configuration for logging. All this config properties we can also set in postgres.conf.conf
